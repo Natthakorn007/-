@@ -1,0 +1,378 @@
+/* ================= ROOT THEME ================= */
+:root{
+  /* base */
+  --bg:#0f1220;
+  --card:#171a2e;
+  --text:#f8f8f2;
+  --muted:#a6accd;
+
+  /* accent */
+  --accent:#8be9fd;
+  --accent2:#bd93f9;
+
+  /* realm colors */
+  --kama-main:#ffb86c;
+  --kama-glow:#ff6b6b;
+
+  --rupa-main:#ffd369;
+  --rupa-glow:#ffeaa7;
+
+  --arupa-main:#bd93f9;
+  --arupa-deep:#2d1b4f;
+}
+
+/* ================= RESET ================= */
+*{ box-sizing:border-box }
+html,body{ margin:0; padding:0 }
+
+/* ================= BODY ================= */
+body{
+  font-family:'Prompt',sans-serif;
+  background:
+    radial-gradient(circle at top,#1a1e3f 0%,transparent 45%),
+    linear-gradient(180deg,#0f1220,#121530);
+  color:var(--text);
+  line-height:1.85;
+  letter-spacing:.2px;
+  scroll-behavior:smooth;
+}
+
+/* subtle cosmic glow */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(139,233,253,.06), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(189,147,249,.06), transparent 45%);
+  z-index:-1;
+}
+
+/* ================= HEADER ================= */
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at top,#1b1f45,#0f1220);
+  padding:2rem;
+}
+
+header h1{
+  font-size:3rem;
+  margin-bottom:.75rem;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 30px rgba(139,233,253,.25),
+    0 0 60px rgba(189,147,249,.15);
+}
+
+header p{
+  color:var(--muted);
+  max-width:760px;
+  margin:auto;
+  font-size:1.05rem;
+}
+
+/* ================= NAV ================= */
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(14px) saturate(120%);
+  background:rgba(15,18,32,.7);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:1.25rem;
+  justify-content:center;
+  margin:0;
+  padding:.85rem;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:400;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:1px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  transition:width .4s ease;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+nav a:hover::after{ width:100% }
+
+/* ================= SECTION ================= */
+section{
+  padding:4.5rem 1.5rem;
+  max-width:1100px;
+  margin:auto;
+}
+
+section h2{
+  text-align:center;
+  font-size:2.3rem;
+  margin-bottom:3rem;
+  letter-spacing:1px;
+  color:var(--accent);
+  text-shadow:0 0 20px rgba(139,233,253,.25);
+}
+
+/* ================= CARD ================= */
+.card{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.18)),
+    var(--card);
+  border-radius:1.25rem;
+  padding:2rem;
+  margin-bottom:2rem;
+  border:1px solid rgba(255,255,255,.05);
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+h3{ color:var(--accent2) }
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.75rem;
+}
+
+/* =================================================
+   REALM BASE (Full-width sections)
+   ================================================= */
+.realm{
+  position:relative;
+  background-size:cover;
+  background-position:center;
+  border-radius:1.75rem;
+  padding:3.5rem 2.75rem;
+  margin-bottom:3.5rem;
+  box-shadow:0 35px 70px rgba(0,0,0,.5);
+  overflow:hidden;
+  transition:transform .8s ease;
+}
+
+.realm:hover{ transform:translateY(-6px) }
+
+.realm::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(15,18,32,.3),
+    rgba(15,18,32,.92)
+  );
+  z-index:0;
+}
+.realm > *{ position:relative; z-index:1 }
+
+/* =================================================
+   กามโลก – Emotion / Cloud / Fire
+   ================================================= */
+.kama{
+  background-image:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+}
+.kama::after{
+  content:"";
+  position:absolute;
+  inset:-25%;
+  background:
+    radial-gradient(circle at top, rgba(255,184,108,.45), transparent 60%),
+    radial-gradient(circle at bottom, rgba(255,90,90,.45), transparent 60%);
+  animation:cloud-drift 60s linear infinite alternate;
+}
+.kama h2{
+  color:var(--kama-main);
+  text-shadow:0 0 20px rgba(255,184,108,.55);
+}
+.kama p{ color:#ffe9c7 }
+
+/* =================================================
+   รูปโลก – Light / Jhāna
+   ================================================= */
+.rupa{
+  background-image:url("https://images.unsplash.com/photo-1502082553048-f009c37129b9");
+  box-shadow:
+    inset 0 0 110px rgba(255,215,120,.25),
+    0 35px 75px rgba(0,0,0,.5);
+}
+.rupa::before{
+  background:linear-gradient(
+    180deg,
+    rgba(255,215,120,.28),
+    rgba(15,18,32,.9)
+  );
+  animation:light-pulse 9s ease-in-out infinite;
+}
+.rupa h2{
+  color:var(--rupa-main);
+  text-shadow:0 0 28px rgba(255,211,105,.75);
+}
+.rupa p{ color:#fff4d6 }
+
+/* =================================================
+   อรูปโลก – Void / Meditation
+   ================================================= */
+.arupa{
+  background-image:url("https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3");
+  filter:saturate(110%) brightness(95%);
+  animation:void-breath 16s ease-in-out infinite;
+}
+.arupa::after{
+  content:"";
+  position:absolute;
+  inset:-70%;
+  background:
+    radial-gradient(circle, rgba(189,147,249,.2), transparent 70%);
+  animation:cosmic-rotate 160s linear infinite;
+}
+.arupa h2{
+  color:var(--arupa-main);
+  text-shadow:0 0 35px rgba(189,147,249,.85);
+}
+.arupa p{ color:#ffffff }
+
+/* =================================================
+   REALM CARD (Grid cards)
+   ================================================= */
+.realm-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:1.5rem;
+  padding:0;
+  background:linear-gradient(180deg,#1a1e38,#121530);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 25px 55px rgba(0,0,0,.5);
+  transition:transform .45s ease, box-shadow .45s ease;
+}
+.realm-card:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 40px 90px rgba(0,0,0,.7);
+}
+.realm-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  filter:saturate(110%) brightness(95%);
+  transition:transform .9s ease;
+}
+.realm-card:hover img{ transform:scale(1.06) }
+
+.realm-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,.05),
+    rgba(15,18,32,.88)
+  );
+}
+
+.realm-card h3{
+  margin:1.3rem 1.8rem .5rem;
+  font-size:1.4rem;
+  letter-spacing:.5px;
+}
+.realm-card p{
+  margin:0 1.8rem 1.25rem;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+/* detail glass */
+.realm-detail{
+  margin:1.5rem;
+  padding:1.3rem;
+  border-radius:1rem;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(8px);
+}
+.realm-detail h4{
+  margin-top:0;
+  color:var(--accent);
+}
+.realm-detail ul{ padding-left:1.2rem; margin:0 }
+.realm-detail li{
+  margin:.4rem 0;
+  list-style:"▸ ";
+}
+
+/* color tuning */
+.kama-card h3{ color:var(--kama-main) }
+.rupa-card h3{ color:var(--rupa-main) }
+.arupa-card h3{ color:var(--arupa-main) }
+
+.kama-card .realm-detail{ box-shadow:0 0 30px rgba(255,120,90,.18) }
+.rupa-card .realm-detail{ box-shadow:0 0 35px rgba(255,215,120,.25) }
+.arupa-card .realm-detail{ box-shadow:0 0 45px rgba(189,147,249,.3) }
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:2.5rem;
+  color:var(--muted);
+  font-size:.9rem;
+  opacity:.85;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes cloud-drift{
+  from{ transform:translateX(-10%) }
+  to{ transform:translateX(10%) }
+}
+@keyframes light-pulse{
+  0%{ opacity:.25 }
+  50%{ opacity:.6 }
+  100%{ opacity:.25 }
+}
+@keyframes void-breath{
+  0%{ transform:scale(1); filter:blur(0) }
+  50%{ transform:scale(1.02); filter:blur(1px) }
+  100%{ transform:scale(1); filter:blur(0) }
+}
+@keyframes cosmic-rotate{
+  from{ transform:rotate(0deg) }
+  to{ transform:rotate(360deg) }
+}
+
+/* ================= ACCESSIBILITY ================= */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+  header h1{ font-size:2.3rem }
+  section h2{ font-size:1.9rem }
+  .realm-card img{ height:180px }
+}
